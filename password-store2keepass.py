@@ -15,19 +15,6 @@ def traverse(path):
             yield os.path.join(root, name)
 
 
-def parse(basepath, path, data):
-    name = os.path.splitext(os.path.basename(path))[0]
-    group = os.path.dirname(os.path.os.path.relpath(path, basepath))
-#    split_data = data.split('\n', maxsplit=1)
-    split_data = data.split('\n' )
-    password = split_data[0]
-    if len( split_data) > 1:
-        notes = split_data[1]
-    else:
-        notes = ''
-    return [group, name, password, notes]
-
-
 def main(path):
 
     gpg = gnupg.GPG( homedir='~/.gnupg' )
@@ -37,10 +24,7 @@ def main(path):
                             'URL', 'Notes', 'Unrecognized'] )
 
     print
-
     MyPassPhrase = raw_input( 'Passphrase: ')
-
-    # print 'path = ' + path
 
     for file_path in traverse(path):
         if os.path.splitext(file_path)[1] == '.gpg':
@@ -49,9 +33,6 @@ def main(path):
             sys.stdout.write( '.')
             sys.stdout.flush()
             if data.ok:
-                # i = file_path.rfind( '/')
-                # file = file_path[ i+1: ]
-                # print file_path
                 d = data.data
                 i = d.find( '\n')
                 pw = d[ :i ]
@@ -63,8 +44,6 @@ def main(path):
                 while len( d) > 0:
                     i = d.find( '\n')
                     l = d[ :i ] + ' '
-                    # print type( l)
-                    # print l
                     if l.lower().startswith( 'username:'):
                         uname = l[ 9: ].strip()
                     elif l.lower().startswith( 'url:'):
@@ -86,15 +65,12 @@ def main(path):
                         title = group + '/' + name
                     else:
                         title = name
-                    # csv_line =[ file, uname, pw, url, notes, other]
                     csv_line = [ 'Root/' + group, name, uname, pw, url, notes, other]
                     if len( d) > 0:
                         d = d[ i+1: ]
                 csv_data.append( csv_line)
-                # print pw + ' - ' + uname
             else:
                 print '\n\nProblem with ' + file_path + '\n'
-
 
     with open('pass.csv', 'w' ) as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
