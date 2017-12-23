@@ -29,3 +29,5 @@ recognize and for files that it cannot read and decrypt.
 The program asks for the passphrase so that it can decrypt the files.
 
 It assumes that the GnuPG files are in ~/.gnupg.
+
+One argument is required and that is the password-store database directory.
