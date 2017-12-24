@@ -47,3 +47,9 @@ For example,
 ## Dependencies
 
 password-store2keepass requires `os`, `sys`, `csv`, and `gnupg`.
+
+# Links
+
+[Password-store site](https://www.passwordstore.org/)
+
+[KeePass site](https://keepass.info/)
