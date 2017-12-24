@@ -4,6 +4,8 @@
 password-store2keepass is a python script to convert a `password-store database`
 into a `csv` file that can be imported into KeePass.
 
+## Assumptions
+
 It assumes that the password-store database has the password as the first line
 (that should be pretty much standard).  It looks for lines that start with
 
@@ -36,7 +38,8 @@ It assumes that the GnuPG files are in `~/.gnupg`.
 
 ## Example
 
-One argument is required and that is the password-store database directory.  For example,
+One argument is required and that is the password-store database directory.
+For example,
 
 `password-store2keepass keepass.csv`
 <br />
