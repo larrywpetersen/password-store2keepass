@@ -34,7 +34,7 @@ The program asks for the *passphrase* so that it can decrypt the files.
 
 It assumes that the GnuPG files are in `~/.gnupg`.
 
-One argument is required and that is the password-store database directory.For example,
+One argument is required and that is the password-store database directory.  For example,
 
-`password-store2 /.password-store`
+`password-store2 ~/.password-store`
 <br />
