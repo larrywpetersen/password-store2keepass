@@ -34,7 +34,13 @@ The program asks for the *passphrase* so that it can decrypt the files.
 
 It assumes that the GnuPG files are in `~/.gnupg`.
 
+## Example
+
 One argument is required and that is the password-store database directory.  For example,
 
 `password-store2keepass keepass.csv`
 <br />
+
+## Dependencies
+
+password-store2keepass requires `os`, `sys`, `csv`, and `gnupg`.
